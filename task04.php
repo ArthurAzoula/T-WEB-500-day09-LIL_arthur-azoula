@@ -1,18 +1,20 @@
 <?php
 
 function whoami() {
-    $name = $_POST["name"];
-    $age = $_POST["age"];
+    $name = isset($_POST["name"]) && !empty($_POST['name']) ? $_POST['name'] : null;
+    $age = isset($_POST["age"]) && !empty($_POST['age']) && is_numeric($_POST['age']) ? $_POST['age'] : null;
 
-    $isAgeValid = isset($age) && is_numeric($age);
+    $res = '';
 
-    if(isset($name) && $isAgeValid) {
-        echo "Hi, my name is $name and I'm $age years old.";
-    } else if(isset($name)) {
-        echo "Hi, my name is $name."; 
-    } else if($isAgeValid) {
-        echo "Hi, I have no name and I'm $age years old.";
+    if ($name && $age) {
+        $res = "Hi, my name is $name and I'm $age years old.";
+    } else if ($name && !$age) {
+        $res = "Hi, my name is $name.";
+    } else if (!$name && $age) {
+        $res = "Hi, I have no name and I'm $age years old.";
     } else {
-        echo "Hi, I have no name.";
+        $res = "Hi, I have no name.";
     }
+
+    echo $res;
 }
