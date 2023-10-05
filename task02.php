@@ -2,5 +2,9 @@
 
 function render_body($page) {
 
-    return require ($page . '.php') ?: '<p>Unknown page</p>';
+    if(file_exists($page . ".html")) {
+        return file_get_contents($page . ".html");
+    } else {
+        return "<p>Unknown page</p>";
+    }
 }
