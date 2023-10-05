@@ -31,7 +31,7 @@ function whoami()
         $res = "Hi, I have no name.";
     }
 
-    if ($curriculum !== '') {
+    if (!empty($curriculum) && $curriculum !== null) {
         $res .= " I'm a student of $format[$curriculum].";
     }
 
