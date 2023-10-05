@@ -20,7 +20,7 @@ function whoami()
     } else if (!$name && $age) {
         $res = "Hi, I have no name and I'm $age years old.";
     } else {
-        $res = "Hi, i'm anonymous.";
+        $res = "Hi, I have no name.";
     }
 
     if ($curriculum !== '') {
